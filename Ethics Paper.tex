@@ -1,0 +1,87 @@
+\documentclass[10pt,twocolumn]{article} 
+
+% required packages for Oxy Comps style
+\usepackage{oxycomps} % the main oxycomps style file
+\usepackage{times} % use Times as the default font
+\usepackage[style=numeric,sorting=nyt]{biblatex} % format the bibliography nicely
+
+\usepackage{amsfonts} % provides many math symbols/fonts
+\usepackage{listings} % provides the lstlisting environment
+\usepackage{amssymb} % provides many math symbols/fonts
+\usepackage{graphicx} % allows insertion of grpahics
+\usepackage{hyperref} % creates links within the page and to URLs
+\usepackage{url} % formats URLs properly
+\usepackage{verbatim} % provides the comment environment
+\usepackage{xpatch} % used to patch \textcite
+
+\bibliography{references}
+\DeclareNameAlias{default}{last-first}
+
+\xpatchbibmacro{textcite}
+  {\printnames{labelname}}
+  {\printnames{labelname} (\printfield{year})}
+  {}
+  {}
+
+\pdfinfo{
+    /Title (Deep Reinforcement Learning: Ethical Considerations)
+    /Author (Caleb Jordening)
+}
+
+\title{Deep Reinforcement Learning: Ethical Considerations}
+\author{Caleb Jordening}
+\affiliation{Occidental College}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Implementing deep reinforcement learning within the video game Rocket League does not need to account for too many ethical considerations  — if any at all; however, the use of such algorithms within the real world does. Problems that arise from DRL machines within complex video game environments can actually help foreshadow some of the issues that might arise in a larger scale setting. Ultimately, it is imperative that we take time to make ethical considerations about how such technology might affect society and what precautions may be taken in order to mitigate the possible detriments.
+
+As researches make advances in Artificial Intelligence (AI), governments, organizations, and the general public seek to understand and implement this technology into everyday life \cite{SchiffBBL20}. A popular and promising subset of AI known as Deep Reinforcement Learning (DRL) has greatly contributed to the pervasive hype around AI and its possibilities. With the rapid growth in popularity and progress, it is important to consider the societal and ethical implications that such technology imposes for the future. Studies have already shown how the implementation of AI has resulted in racism/discrimination, algorithmic bias, technological unemployment, and many other challenges that researches must circumvent in hopes of creating an equitable and ethical future \cite{SchiffBBL20}. As the AI community grows and  more people realize the powerful potential of AI, the more likely the societal implications and ethics will be overlooked \cite{10.1613/jair.1.12360}. This paper will analyze proposed implementations of AI into the real world — more specifically DRL machines/algorithms — and the current potential ethical ramifications that they might hold.
+
+\section{What is Deep Reinforcement Learning?}
+Understanding the general basics of DRL will contribute to greater insight of the potential ethical instability that may befall on society if DRL machines are implemented in a larger-scale, real world environment. 
+
+\subsection{The Basics}
+Deep reinforcement learning is essentially the combination of reinforcement learning with deep learning. Within DRL, the principles of normal reinforcement learning still apply. Reinforcement learning is extremely similar to how humans learn by interacting with their environment. These interactions provide copious amounts of information about cause and effect relationships; and, this learned knowledge affects decision making and behavior in one's pursuit of achieving their goals. Reinforcement learning provides a computational means by which machines can – through trial and error — learn how to achieve certain goals by interacting with its environment and receive rewards or punishments based off the actions it takes \cite{Sutton1998}. Overall, the goal is for the agent to learn an optimal policy that enables it to choose the best action from any given state that will maximize the reward \cite{10.1613/jair.1.12360}
+
+\subsection{Deep Learning}
+Deep learning is the implementation of a neural network with more than one hidden layer. Deep neural networks (DNNs) are used for approximating functions and making predictions based off of the data the network is trained on. Theoretically, as the number of nodes in a neural network approaches infinity, it becomes possible through training to approximate any function — regardless of how many parameters there are. This enables a machine to find useful patterns in complex, high-dimensional data, in order to generalise to novel settings/data \cite{10.1613/jair.1.12360}.
+
+\subsection{Deep Reinforcement Learning}
+The intersection of reinforcement and deep learning, then, allows for the agent to learn from its environment via reinforcement learning; while, utilizing a DNN to approximate the optimal policy. The RL algorithm is also able to update the parameters of the DNN so that the action outputs will lead to higher rewards \cite{10.1613/jair.1.12360}. Additionally, because of a DNN's ability to deal with high-dimensional data, it allows for the agent to learn in much more complex, world-realistic settings than ever before. However, just because the opportunity is present, this does not mean DRL should be immediately applied on such a large scale in the real world. To understand why, the proposed applications of DRL in the real world will be considered and analyzed under an ethical lens. 
+
+\section{Real World Applications}
+RL and DRL algorithms are beginning to be used for self driving cars, healthcare industry automation, automated trading/finance, and natural language processing just to name a few \cite{mwiti_2021}.
+
+\subsection{DRL in Healthcare}
+
+Within the realm of healthcare, there is currently a proposal to use DRL to treat patients based off of learned policies from historical data. \cite{mwiti_2021}. In such high stakes situations, the machine must refrain from learning and suggesting unorthodox policies that may experiment with a patient's life. Gottesman et al. (2018) \cite{DBLP:journals/corr/abs-1805-12298} writes that with this comes a great deal of additional discernment from medical professionals to assess the quality of the suggested policies. The paper additionally explains that not all clinical problems can or should be solved by using fancy, "black-box" RL algorithms. Understandably, given the data-hungry nature of DRL algorithms and the scarcity of data within the clinical setting, it becomes harder — if not impossible — for clinicians to discern how DRL machines produced certain outputs. This creates a moral uncertainty for the clinician to determine whether they should carry out their own treatments, or the treatment given by the machine.
+
+\subsection{Natural Language Processing and Unintentional Consequences}
+Natural language processing is an area of AI research that is struggling with the ethical ramifications of data bias. Language machines such as GPT-2 are relatively proficient at generating cogent paragraphs of text and are even able to mimic a writing voice when simply given context from a prompt; however, they can potentially be dangerous because of their lack of understanding of what exactly their outputs mean. GPT-2 and other language models are machines that learn from data sets collected off of the internet. While effective, the internet can be a biased place. For example, Reddit, one of the internet databases used in training GPT-2, is comprised of predominantly male users that are between the ages of 18 and 29 \cite{Bender2021OnTD}. Bender et al. (2021) \cite{Bender2021OnTD} goes on to write about ramifications of racist, homophobic, sexist, etc. texts that can arise from these machines trained off of these databases.  Hence, they are given the title of “stochastic parrots” because they are merely mimicking the language of the texts that they were trained upon. 
+
+\subsection{DRL in Natural Language Processing}
+While GPT-2 may not be based off of a DRL algorithm, NLP projects that do use DRL are still susceptible to this kind of bias. The machine is trained via deep neural networks to approximate the optimal policy that will maximize reward. To do this, one must describe/quantify rewards that will help the machine achieve its goals. Say for example, one wants to create a bot via reinforcement learning that writes captions/tweets that maximize engagement from other users. Without proper precaution, the algorithm might converge on a policy that gets the most engagement by using shock factor and generating obscene texts. It may have found a policy that provides the user with the most engagement; however, it is done by a means that may spread prejudice and hatred. Even if punishments were implemented, the machine would still need to explore in order to learn and may end up generating hateful texts anyways; and, it may be susceptible to reward hacking, which will be explained later.
+
+\subsection{Data Collection Issues}
+
+To reiterate, the methods of trial-and-error used in DRL to learn optimal policies cannot be used in high stakes settings. Collecting data to find the optimal policies for creating cogent texts through NLPs, making clinical decisions, making money in the stock market, or creating self-driving cars would require performing trial-and-error experiments at the potential cost of being offensive, losing money, and even at the cost of human lives. A machine cannot blow through a stoplight and cause a car accident, make an awful trade that loses a large part of one's portfolio, generate profusely offensive text, or prescribe a treatment to someone that ends up killing them before the machine learns to stray away from such bad behaviors. \cite{10.1613/jair.1.12360}. Simulations may provide environments for training; however, they may not be complex enough to learn and account for every nuance of everyday life. Data collection may also be expensive to obtain, or may infringe on people's privacy. Thus, some parameters may be overlooked or excluded by the machine — leading to more unintentional consequences or discrimination. 
+
+
+
+
+\section{Data Bias, Achieving Goals, and Power}
+Unintentional consequences due poor to reward shaping segues into the idea of data bias. It would be remiss to discuss machine learning without discussing how data bias can affect the outputs generated by a machine; and, how those outputs could have ethical ramifications. For DRL, bias will come from the shaping of reward functions and the people/companies who seek to profit "whose goals may not be aligned with society as a whole" \cite{10.1613/jair.1.12360}. Take for example, a simple vacuum robot trained via DRL with the goal of vacuuming every inch of a given floor-space. The vacuum robot, in order to clean every inch, might knock over a small table and break a valuable vase in order to achieve its goal. The machine does not care, nor does it understand the ramifications of breaking the vase; it is just following the optimal policy that maximizes the reward. In the same manner, a bot trained via DRL designed with the goal of maximizing/making money through some means is susceptible to exploiting individuals and can result in widening already large economic disparities between the wealthy and poor. Hence, there is an ethical responsibility to create guidelines that consider the values and diversity of those affected by the implementation of DRL in the real world \cite{10.1613/jair.1.12360}. Otherwise, there will exist a disparity of power between those who can utilize DRL machines to their own advantage, and those who do not have access to such machines. 
+
+\subsection{Reward Hacking}
+In the same vein exists the issue of reward hacking by the machine. Much like humans, machines will exploit shortcuts to maximize gain when they are available. If a DRL machine explores and finds a policy that maximizes a reward, it will perform those actions of the policy regardless of whether or not it actually achieves the intended goal. In a real world, high stakes setting, there is no room for error. Especially as objectives become more nuanced and pose high-dimensional problems, reward shaping becomes exponentially more complex; and, there exist more opportunities for the machine to find ways to exploit rewards via a means that do not achieve the desired goal \cite{frye_2021}.
+
+\section{Conclusion}
+
+Ultimately, while video games are not necessarily high-stakes environments, we can use the issues found in data bias, reward hacking, collecting data, high-dimensionality, etc. and generalise these findings to analyze what could potentially go wrong when implemented to real life, high-stakes settings. In general, AI is making progress at rates that are so fast, that it might be slightly uncomfortable for many. After all, implementing intelligent machines into everyday life will potentially radically alter culture and society; thus, it is important to consider the ethical ramifications and unintentional consequences that might occur before hastily doing so. 
+
+\printbibliography
+\end{document}
